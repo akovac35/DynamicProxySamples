@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using Castle.DynamicProxy;
 using Shared.Blogs;
-using Shared.CustomBlogService.Dto;
-using Shared.Helper;
+using Shared.Custom.Helper;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Shared.CustomBlogService
+namespace Shared.Custom.CustomBlogService
 {
     public class CustomBlogServiceInterceptor : IInterceptor
     {

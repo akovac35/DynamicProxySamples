@@ -1,9 +1,8 @@
 ﻿using Shared.Blogs;
-using Shared.CustomBlogService.Dto;
 using System;
 using System.Collections.Generic;
 
-namespace Shared.CustomBlogService
+namespace Shared.Custom.CustomBlogService
 {
     public interface ICustomBlogService: IDisposable
     {

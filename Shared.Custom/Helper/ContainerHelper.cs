@@ -3,7 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Shared.Blogs;
 
-namespace Shared.Helper
+namespace Shared.Custom.Helper
 {
 	public class ContainerHelper: IWindsorInstaller
     {

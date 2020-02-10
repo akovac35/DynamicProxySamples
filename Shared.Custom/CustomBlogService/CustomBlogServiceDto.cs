@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shared.CustomBlogService.Dto
+﻿namespace Shared.Custom.CustomBlogService
 {
     public class CustomBlogServiceDto
     {

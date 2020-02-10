@@ -1,11 +1,9 @@
 ﻿using Castle.MicroKernel.Registration;
-using Castle.Windsor.Installer;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Shared.Blogs;
-using Shared.Helper;
-using System.Reflection;
+using Shared.Custom.Helper;
 
 [SetUpFixture]
 public class GlobalTestSetup
