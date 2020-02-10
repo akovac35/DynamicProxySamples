@@ -1,6 +1,6 @@
 ﻿using Castle.DynamicProxy;
 
-namespace Shared.Custom.Helper
+namespace Shared.Custom.Helpers
 {
     public class ProxyHelper
     {

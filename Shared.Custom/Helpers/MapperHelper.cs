@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Shared.Custom.Helper
+namespace Shared.Custom.Helpers
 {
     public class MapperHelper
     {

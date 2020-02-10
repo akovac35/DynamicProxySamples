@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Castle.DynamicProxy;
 using Shared.Blogs;
-using Shared.Custom.Helper;
+using Shared.Custom.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

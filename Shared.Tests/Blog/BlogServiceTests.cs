@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Shared.Blogs;
-using Shared.Custom.Helper;
+using Shared.Custom.Helpers;
 using System.Linq;
 
 namespace Shared.Tests.Blog

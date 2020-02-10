@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Shared.Blogs;
 using Shared.Custom.CustomBlogService;
-using Shared.Custom.Helper;
+using Shared.Custom.Helpers;
 using System.Linq;
 
 namespace Shared.Tests.CustomService

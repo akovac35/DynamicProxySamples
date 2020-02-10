@@ -3,7 +3,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Shared.Blogs;
-using Shared.Custom.Helper;
+using Shared.Custom.Helpers;
 
 [SetUpFixture]
 public class GlobalTestSetup
