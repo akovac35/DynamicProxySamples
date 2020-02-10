@@ -11,9 +11,9 @@ public class GlobalTestSetup
     [OneTimeSetUp]
     public void Setup()
     {
-        ContainerHelper.WindsorContainer.Install(new ContainerHelper());
-        ContainerHelper.WindsorContainer.Register(Component.For<SqliteConnection>().DependsOn(new { connectionString = "DataSource=:memory:" }).LifestyleTransient());
-        ContainerHelper.WindsorContainer.Register(Component.For<BlogContext>().UsingFactoryMethod(kernel =>
+        WindsorHelper.WindsorContainer.Install(new WindsorHelper());
+        WindsorHelper.WindsorContainer.Register(Component.For<SqliteConnection>().DependsOn(new { connectionString = "DataSource=:memory:" }).LifestyleTransient());
+        WindsorHelper.WindsorContainer.Register(Component.For<BlogContext>().UsingFactoryMethod(kernel =>
         {
             var connection = kernel.Resolve<SqliteConnection>();
             var options = new DbContextOptionsBuilder<BlogContext>()

@@ -13,7 +13,7 @@ namespace Shared.Tests.CustomService
         [Test]
         public void CustomServiceTest()
         {
-            IBlogService blogService = ContainerHelper.WindsorContainer.Resolve<IBlogService>();
+            IBlogService blogService = WindsorHelper.WindsorContainer.Resolve<IBlogService>();
             string searchTerm = "https://example.com";
 
             try
@@ -25,7 +25,7 @@ namespace Shared.Tests.CustomService
                 context.Database.EnsureCreated();
 
                 CustomBlogServiceInterceptor customServiceInterceptor = new CustomBlogServiceInterceptor(blogService);
-                ICustomBlogService customService = ProxyHelper.ProxyGenerator.CreateInterfaceProxyWithoutTarget<ICustomBlogService>(customServiceInterceptor);
+                ICustomBlogService customService = CastleHelper.ProxyGenerator.CreateInterfaceProxyWithoutTarget<ICustomBlogService>(customServiceInterceptor);
 
                 customService.MethodWithoutParams();
                 customService.Add(searchTerm);
@@ -39,7 +39,7 @@ namespace Shared.Tests.CustomService
             }
             finally
             {
-                ContainerHelper.WindsorContainer.Release(blogService);
+                WindsorHelper.WindsorContainer.Release(blogService);
             }
         }
     }

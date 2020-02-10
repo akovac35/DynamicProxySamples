@@ -2,7 +2,7 @@
 
 namespace Shared.Custom.Helpers
 {
-    public class ProxyHelper
+    public class CastleHelper
     {
         public static ProxyGenerator ProxyGenerator = new ProxyGenerator();
     }

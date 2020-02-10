@@ -1,17 +1,28 @@
 ﻿using AutoMapper;
+using Shared.Blogs;
+using Shared.Custom.CustomBlogService;
 using System;
 using System.Collections.Generic;
 
 namespace Shared.Custom.Helpers
 {
-    public class MapperHelper
+    public class AutoMapperHelper
     {
-        public static object Map<TSource, TDestination>(object source, IMapper mapper)
+        public static MapperConfiguration MapperConfiguration;
+
+        static AutoMapperHelper()
+        {
+            MapperConfiguration = new MapperConfiguration(cfg => cfg.CreateMap<Blog, CustomBlogServiceDto>());
+        }
+
+        public static object Map<TSource, TDestination>(object source)
         {
             if (source == null)
             {
                 return source;
             }
+
+            IMapper mapper = MapperConfiguration.CreateMapper();
 
             Type sourceType = source.GetType();
             if (sourceType == typeof(TSource))

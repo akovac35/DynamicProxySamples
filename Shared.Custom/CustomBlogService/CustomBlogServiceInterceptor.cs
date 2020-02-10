@@ -11,18 +11,10 @@ namespace Shared.Custom.CustomBlogService
     public class CustomBlogServiceInterceptor : IInterceptor
     {
         protected IBlogService _blogService;
-        protected static MapperConfiguration _mapperConfiguration;
-        protected IMapper _mapper;
-
-        static CustomBlogServiceInterceptor()
-        {
-            _mapperConfiguration = new MapperConfiguration(cfg => cfg.CreateMap<Blog, CustomBlogServiceDto>());
-        }
 
         public CustomBlogServiceInterceptor(IBlogService blogService)
         {
             _blogService = blogService;
-            _mapper = _mapperConfiguration.CreateMapper();
         }
 
         public void Intercept(IInvocation invocation)
@@ -37,7 +29,7 @@ namespace Shared.Custom.CustomBlogService
             MethodInfo methodInfo = type.GetMethod(invocation.Method.Name, argumentTypes.ToArray());
 
             Object result = methodInfo.Invoke(_blogService, invocation.Arguments);
-            invocation.ReturnValue = MapperHelper.Map<Blog, CustomBlogServiceDto>(result, _mapper);
+            invocation.ReturnValue = AutoMapperHelper.Map<Blog, CustomBlogServiceDto>(result);
         }
     }
 }

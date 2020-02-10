@@ -5,7 +5,7 @@ using Shared.Blogs;
 
 namespace Shared.Custom.Helpers
 {
-	public class ContainerHelper: IWindsorInstaller
+	public class WindsorHelper: IWindsorInstaller
     {
         public static WindsorContainer WindsorContainer = new WindsorContainer();
 
