@@ -5,13 +5,13 @@ using Shared.Custom.CustomBlogService;
 using Shared.Custom.Helpers;
 using System.Linq;
 
-namespace Shared.Tests.CustomService
+namespace Shared.Tests.CustomBlogService
 {
     [TestFixture]
-    public class CustomServiceTests
+    public class CustomBlogServiceTests
     {
         [Test]
-        public void CustomServiceTest()
+        public void BlogInsertTest()
         {
             IBlogService blogService = WindsorHelper.WindsorContainer.Resolve<IBlogService>();
             string searchTerm = "https://example.com";
