@@ -7,7 +7,7 @@ Navigate to ../Shared.Tests and execute ```dotnet test```.
 ### What is it about?
 This sample project demonstrates the application of dynamic proxies applied to Adapter object oriented pattern which converts the interface of a class into another interface clients expect. Mature projects such as Castle DynamicProxy have made it possible to generate lightweight dynamic proxies on the fly at runtime, the application of which is also demonstrated.
 
-Scenarios commonly encountered in enterprise applications are that generated clients and data transfer objects (DTOs) are without declared interface or virtual methods, either of which is required for Castle dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community. This sample demonstrates one possibility of Adapter pattern implementation using Castle DynamicProxy.
+Scenarios commonly encountered in enterprise applications are that generated clients and data transfer objects (DTOs) are without declared interface or virtual methods, either of which is required for Castle dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community. This sample demonstrates one possibility of Adapter pattern implementation using Castle DynamicProxy for a database service class without virtual methods or public interfaces.
 
 To highlight the described scenario, imagine a class for manipulating ```Blog``` table in a database:
 
