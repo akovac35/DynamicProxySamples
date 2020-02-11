@@ -17,7 +17,7 @@ using System.Linq;
 
 namespace Shared.Blogs
 {
-    public class BlogService
+    public class BlogService: IDisposable
     {
         public BlogContext Context { get; set; }
 
@@ -137,4 +137,4 @@ namespace Shared.Custom.CustomBlogService
 }
 ```
 
-The actual adapter implementation is the purpose of this sample, see ```CustomBlogServiceInterceptor``` class implementation.
+The actual adapter implementation is the purpose of this sample, see ```CustomBlogServiceInterceptor``` class for details.
