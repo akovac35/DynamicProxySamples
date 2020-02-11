@@ -11,7 +11,7 @@ namespace Shared.Custom.Helpers
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
-			container.Register(Component.For<IBlogService>().ImplementedBy<BlogService>().LifestyleTransient());
+			container.Register(Component.For<BlogService>().LifestyleTransient());
 		}
 	}
 }

@@ -3,23 +3,23 @@ using System.Linq;
 
 namespace Shared.Blogs
 {
-    public class BlogService : IBlogService
+    public class BlogService
     {
-        public virtual BlogContext Context { get; set; }
+        public BlogContext Context { get; set; }
 
         public BlogService(BlogContext context)
         {
             Context = context;
         }
 
-        public virtual void Add(string url)
+        public void Add(string url)
         {
             var blog = new Blog { Url = url };
             Context.Blogs.Add(blog);
             Context.SaveChanges();
         }
 
-        public virtual IEnumerable<Blog> Find(string term)
+        public IEnumerable<Blog> Find(string term)
         {
             return Context.Blogs
                 .Where(b => b.Url.Contains(term))
@@ -27,7 +27,7 @@ namespace Shared.Blogs
                 .ToList();
         }
 
-        public virtual string MethodWithoutParams()
+        public string MethodWithoutParams()
         {
             return "Just a test";
         }
@@ -48,7 +48,7 @@ namespace Shared.Blogs
             }
         }
 
-        public virtual void Dispose()
+        public void Dispose()
         {
             Dispose(true);
         }

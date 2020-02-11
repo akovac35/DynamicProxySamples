@@ -10,9 +10,9 @@ namespace Shared.Custom.CustomBlogService
 {
     public class CustomBlogServiceInterceptor : IInterceptor
     {
-        protected IBlogService _blogService;
+        protected BlogService _blogService;
 
-        public CustomBlogServiceInterceptor(IBlogService blogService)
+        public CustomBlogServiceInterceptor(BlogService blogService)
         {
             _blogService = blogService;
         }
@@ -25,7 +25,7 @@ namespace Shared.Custom.CustomBlogService
                 argumentTypes.Add(parameter.ParameterType);
             }
 
-            Type type = typeof(IBlogService);
+            Type type = typeof(BlogService);
             MethodInfo methodInfo = type.GetMethod(invocation.Method.Name, argumentTypes.ToArray());
 
             Object result = methodInfo.Invoke(_blogService, invocation.Arguments);
