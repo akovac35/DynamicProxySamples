@@ -7,7 +7,7 @@ Navigate to ../Shared.Tests and execute ```dotnet test```.
 ### What is it about?
 This sample project demonstrates the application of dynamic proxies applied to Adapter object oriented pattern which converts the interface of a class into another interface clients expect. Mature projects such as Castle DynamicProxy have made it possible to generate lightweight dynamic proxies on the fly at runtime.
 
-Scenarios commonly encountered in enterprise applications are generated clients and data transfer objects (DTO) without declared interface or virtual methods, either of which is usually required for Castle dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community. 
+Scenarios commonly encountered in enterprise applications are generated clients and data transfer objects (DTOs) without declared interface or virtual methods, either of which is usually required for Castle dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community. 
 
 To highlight the described scenario, imagine a class for manipulating ```Blog``` table in a database:
 
@@ -108,7 +108,7 @@ blogService.Add(searchTerm);
 
 To a modified invocation pattern:
 
-```
+```cs
 BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
 ...
 CustomBlogServiceInterceptor customServiceInterceptor = new CustomBlogServiceInterceptor(blogService);
@@ -117,4 +117,24 @@ ICustomBlogService customService = CastleHelper.ProxyGenerator.CreateInterfacePr
 customService.Add(searchTerm);
 ```
 
-The ```ICustomBlogService``` is an interface extracted from the ```BlogService``` class and modified slightly so that the types and possibly annotations match specific business requirements, in this case, ```CustomBlogServiceDto``` class should be used instead of ```Blog``` class. The rest should be pretty much automated, and this is the purpose of this sample.
+The ```ICustomBlogService``` is an interface extracted from the ```BlogService``` class and modified slightly so that the types and possibly annotations match specific business requirements, in this case, ```CustomBlogServiceDto``` class should be used instead of ```Blog``` class:
+
+```cs
+using Shared.Blogs;
+using System;
+using System.Collections.Generic;
+
+namespace Shared.Custom.CustomBlogService
+{
+    public interface ICustomBlogService: IDisposable
+    {
+        BlogContext Context { get; set; }
+
+        void Add(string url);
+        IEnumerable<CustomBlogServiceDto> Find(string term);
+        string MethodWithoutParams();
+    }
+}
+```
+
+The actual adapter implementation is the purpose of this sample, see ```CustomBlogServiceInterceptor``` class implementation.
