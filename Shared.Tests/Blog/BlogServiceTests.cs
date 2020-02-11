@@ -12,7 +12,7 @@ namespace Shared.Tests.Blog
         [Test]
         public void BlogInsertTest()
         {
-            IBlogService blogService = WindsorHelper.WindsorContainer.Resolve<IBlogService>();
+            BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
             string searchTerm = "https://example.com";
 
             try
