@@ -98,4 +98,21 @@ namespace Shared.Custom.CustomBlogService
 
 ```
 
+It would be really convenient for a developer to be able to use the ```CustomBlogServiceDto``` with the ```BlogService``` and in the process apply any transformations and attribute processing transparently with only minimal changes to the invocation pattern - so from the original invocation pattern
 
+```cs
+BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
+...
+blogService.Add(searchTerm);
+```
+
+to a modified invocation pattern
+
+```
+BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
+...
+CustomBlogServiceInterceptor customServiceInterceptor = new CustomBlogServiceInterceptor(blogService);
+ICustomBlogService customService = CastleHelper.ProxyGenerator.CreateInterfaceProxyWithoutTarget<ICustomBlogService>(customServiceInterceptor);
+
+customService.Add(searchTerm);
+```
