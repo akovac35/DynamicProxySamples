@@ -9,3 +9,4 @@ This sample project demonstrates the application of dynamic proxies applied to A
 
 Scenarios commonly encountered in enterprise applications are generated clients and data transfer objects without declared interface or virtual methods, either of which is usually required for Castle dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community. 
 
+Suppose you have a database service class:
