@@ -106,7 +106,7 @@ BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
 blogService.Add(searchTerm);
 ```
 
-To a modified invocation pattern:
+To a modified invocation pattern using a dynamic proxy:
 
 ```cs
 BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
@@ -137,4 +137,23 @@ namespace Shared.Custom.CustomBlogService
 }
 ```
 
-The actual adapter implementation is the purpose of this sample, see ```CustomBlogServiceInterceptor``` class for details.
+Dynamic proxy passes method invocations to the ```CustomBlogServiceInterceptor```, which in this sample acts as an adapter for the ```BlogService``` class. The implementation relies on reflection:
+
+```cs
+public void Intercept(IInvocation invocation)
+{
+    List<Type> argumentTypes = new List<Type>();
+    foreach (ParameterInfo parameter in invocation.Method.GetParameters())
+    {
+        argumentTypes.Add(parameter.ParameterType);
+    }
+
+    Type type = typeof(BlogService);
+    MethodInfo methodInfo = type.GetMethod(invocation.Method.Name, argumentTypes.ToArray());
+
+    Object result = methodInfo.Invoke(_blogService, invocation.Arguments);
+    invocation.ReturnValue = AutoMapperHelper.Map<Blog, CustomBlogServiceDto>(result);
+}
+```
+
+See ```CustomBlogServiceTests``` for invocation details.
