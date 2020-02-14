@@ -16,10 +16,9 @@ namespace Shared.Tests.CustomBlogService
             BlogService blogService = WindsorHelper.WindsorContainer.Resolve<BlogService>();
             string searchTerm = "https://example.com";
 
+            BlogContext context = blogService.Context;
             try
             {
-                BlogContext context = blogService.Context;
-
                 // In-memory database exists only for the duration of an open connection
                 context.Database.OpenConnection();
                 context.Database.EnsureCreated();
@@ -39,6 +38,7 @@ namespace Shared.Tests.CustomBlogService
             }
             finally
             {
+                context.Database.CloseConnection();
                 WindsorHelper.WindsorContainer.Release(blogService);
             }
         }
