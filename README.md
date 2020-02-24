@@ -5,11 +5,11 @@ A small project to explore dynamic proxy functionality in .NET Core.
 Navigate to ../Shared.Tests and execute ```dotnet test```.
 
 ### What is it about?
-This sample project demonstrates the application of dynamic proxies applied to Adapter object oriented pattern which converts the interface of a class into another interface clients expect. Mature projects such as Castle DynamicProxy have made it possible to generate lightweight dynamic proxies on the fly at runtime, the application of which is also demonstrated.
+This sample project demonstrates the application of dynamic proxies applied to Adapter object oriented pattern which converts the interface of a class into another interface clients expect.
 
-Scenarios commonly encountered in enterprise applications are that generated clients and data transfer objects (DTOs) are without declared interface or virtual methods, either of which is required for Castle dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community. This sample demonstrates one possibility of Adapter pattern implementation using Castle DynamicProxy for a database service class without virtual methods or public interfaces.
+Scenarios commonly encountered in enterprise applications are that generated clients (service, database) and data transfer objects (DTOs) are without declared interface or virtual methods, either of which is usually required for dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community - one such mature project is Castle DynamicProxy, which can only proxy virtual methods. One possibility of Adapter pattern implementation using Castle DynamicProxy for a database service class without virtual methods or public interfaces is detailed below.
 
-To highlight the described scenario, imagine a class for manipulating ```Blog``` table in a database:
+We'll begin with a class for manipulating ```Blog``` table in a database:
 
 ```cs
 using System.Collections.Generic;
@@ -156,4 +156,4 @@ public void Intercept(IInvocation invocation)
 }
 ```
 
-See ```CustomBlogServiceTests``` for invocation details.
+The ```CustomBlogServiceTests``` class contains the sample entry point.
