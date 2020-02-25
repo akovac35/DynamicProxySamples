@@ -5,11 +5,11 @@ A small project to explore dynamic proxy functionality in .NET Core.
 Navigate to ../Shared.Tests and execute ```dotnet test```.
 
 ### What is it about?
-This sample project demonstrates the application of dynamic proxies applied to Adapter object oriented pattern which converts the interface of a class into another interface clients expect.
+This sample project demonstrates the application of dynamic proxies applied to Adapter object oriented pattern which converts the interface of a class into another interface clients expect. The end result is the automation of adapter mappings to original interfaces while still supporting customized object mappings and attribute processing.
 
-Scenarios commonly encountered in enterprise applications are that generated clients (service, database) and data transfer objects (DTOs) are without declared interface or virtual methods, either of which is usually required for dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community - one such mature project is Castle DynamicProxy, which can only proxy virtual methods. One possibility of Adapter pattern implementation using Castle DynamicProxy for a database service class without virtual methods or public interfaces is detailed below.
+Scenarios commonly encountered in enterprise applications are that generated clients (service, database) and data transfer objects (DTOs) are without declared interface or virtual methods, either of which is usually required for dynamic proxy functionality. While there may exist libraries without such restrictions, one should aim to build enterprise applications on mature projects with large user and contributor community - one such mature project is Castle DynamicProxy, which can only proxy virtual methods.
 
-We'll begin with a class for manipulating ```Blog``` table in a database:
+In what follows I will demonstrate Adapter pattern implementation using Castle DynamicProxy for a database service class without virtual methods or public interfaces. We'll begin with a class for manipulating ```Blog``` table in a database:
 
 ```cs
 using System.Collections.Generic;
