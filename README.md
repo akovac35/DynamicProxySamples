@@ -117,7 +117,7 @@ ICustomBlogService customService = CastleHelper.ProxyGenerator.CreateInterfacePr
 customService.Add(searchTerm);
 ```
 
-The ```ICustomBlogService``` is an interface extracted from the ```BlogService``` class and modified slightly so that the types and possibly annotations match specific business requirements, in this case, the ```CustomBlogServiceDto``` class should be used instead of the ```Blog``` class:
+The ```ICustomBlogService``` is an interface extracted from the ```BlogService``` class and modified slightly so that types match specific business requirements, in this case, the ```CustomBlogServiceDto``` class should be used instead of the ```Blog``` class:
 
 ```cs
 using Shared.Blogs;
